@@ -8,7 +8,7 @@
 </div>
 <!-- BREADCRUMBS -->
 
-<!-- PANEL -->
+<!-- pANEL -->
 <div>
   <PaNel/>
 </div>
