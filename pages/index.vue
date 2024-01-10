@@ -22,7 +22,7 @@
 <p class="text-grey text-small mt-1">Record your first video/audio and share it what your team, friends, followers and customers.</p>
 
 <div class="mt-3">
-  <button type="button" class="btn btn-primary gap-3 new-request-btn"><i class="bi bi-camera-video mr-1"></i> New Request</button>
+  <button type="button" class="btn btn-primary gap-3 new-request-btn" @click="grantPermission"><i class="bi bi-camera-video mr-1"></i> New Request</button>
   <button type="button" class="btn btn-danger gap-3"><i class="bi bi-record-circle mr-1"></i>Start Recording</button>
 </div>
 </div>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="col-lg-6 py-5">
-<h5 class="text-dark-blue">Want more controls & better quality recording?</h5>
+<h5 class="text-dark-blue info">Want more controls & better quality recording?</h5>
 
 <div class="mt-5">
   <button type="button" class="btn btn-primary">Download the desktop recorder</button>
@@ -44,70 +44,26 @@
 </div>
 </div>
 
-<!-- <div>
-    <button @click="startRecording">Start Recording</button>
-    <button @click="stopRecording">Stop Recording</button>
-  </div> -->
+<!-- Permission Modal -->
+<GrantPermission/>
 <!-- INFO SECTION -->
  </div>
 </template>
 
 <script>
 import PaNel from '../components/PaNel.vue'
+import GrantPermission from '~/components/GrantPermission.vue';
 export default {
   name: 'IndexPage',
 
   components:{
-    PaNel
+    PaNel,
+    GrantPermission
   },
   layout: 'Dashboard',
-  data() {
-    return {
-      mediaRecorder: null,
-      recordedChunks: [],
-      recording: false,
-    };
-  },
   methods: {
-    startRecording() {
-      navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-        .then((stream) => {
-          this.mediaRecorder = new MediaRecorder(stream);
-          this.recordedChunks = [];
-
-          this.mediaRecorder.ondataavailable = (event) => {
-            if (event.data.size > 0) {
-              this.recordedChunks.push(event.data);
-            }
-          };
-
-          this.mediaRecorder.onstop = () => {
-            this.saveRecording();
-          };
-
-          this.mediaRecorder.start();
-          this.recording = true;
-        })
-        .catch((error) => {
-          console.error('Error accessing media devices:', error);
-        });
-    },
-    stopRecording() {
-      if (this.mediaRecorder && this.recording) {
-        this.mediaRecorder.stop();
-        this.recording = false;
-      }
-    },
-    saveRecording() {
-      const blob = new Blob(this.recordedChunks, { type: 'video/webm' });
-      const title = prompt('Enter a title for the recording:');
-      if (title) {
-        // Now you can save the blob and title, e.g., send it to a server
-        // You might want to use a library like axios for this
-        // axios.post('/api/save-recording', { title, blob });
-        console.log('Recording saved with title:', title);
-        console.log('Recording saved with title:', blob);
-      }
+    grantPermission() {
+      this.$bvModal.show('grant-permission')
     },
   },
 }

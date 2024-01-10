@@ -8,7 +8,7 @@
 <!-- PARENT COMPONENT TO HOLD CONTENT -->
 <div class="d-flex">
   <!-- SIDEBAR -->
-  <aside class="bg-light py-5 px-2">
+  <aside v-if="displaySideBar" class="bg-light py-5 px-2">
     <ul class="nav flex-column gap-2 mt-5">
   <li class="nav-item-pill mt-5 justify-content-center d-flex">
     <nuxt-link to="/" class="nav-link d-flex tab">
@@ -55,6 +55,21 @@ name: 'Dashboard',
 components:
 {
   NavBar
+},
+
+data()
+{
+  return{
+   displaySideBar: true
+  }
+},
+
+mounted()
+{
+  if(this.$route.path==='/session')
+  {
+    this.displaySideBar= false
+  }
 }
 }
 </script>

@@ -3,7 +3,10 @@ body
   font-family: 'Poppins', sans-serif;
 
 }
-
+.form-select
+{
+  background-color: #F8FAFB;
+}
 button
 {
   font-size: small !important;
@@ -23,6 +26,7 @@ button
   background: #0DABD8;
   border-radius: 28px;
   color: white;
+  border: none;
 }
 .record-section{
   border-style: dashed !important;
@@ -30,13 +34,19 @@ button
 }
 .btn-danger, .btn-danger:hover
 {
+  border: none;
   background: #EF5350;
   border-radius: 28px;
   color: white;
 }
+.form-check-input:checked {
+  background-color:  #03cc80;
+  border: none;
+  box-shadow: none;
+}
 .text-light
 {
-  color: #637C8E;;
+  color: #21455E !important;
 }
 
 .dropdown-item:hover
@@ -171,6 +181,10 @@ nav
 }
 
 @media screen and (max-width: 768px) {
+  .info
+  {
+    text-align: center;
+  }
   .nav-item-pill
   {
     font-size: x-small;
