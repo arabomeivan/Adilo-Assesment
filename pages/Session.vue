@@ -1,8 +1,8 @@
 <template lang="">
   <div>
     <div class="py-5 main-content container">
-<div class="mb-2">
-  Live Preview
+<div class="mb-2 d-flex gap-2 ml-2">
+  <i class="bi bi-record-circle mr-1 text-danger"></i> Live Preview
 </div>
 
 <div class="webcam mb-2">
@@ -10,7 +10,7 @@
   </div>
 
   <div class="text-center">
-    <button type="button" class="btn btn-danger gap-3" @click="stopRecording"><i class="bi bi-stop-circle"></i></i>Stop Recording</button>
+    <button type="button" class="btn btn-danger gap-3" @click="stopRecording"><i class="bi bi-stop-circle mr-1"></i></i>Stop Recording</button>
   </div>
     </div>
   </div>
@@ -37,10 +37,11 @@ export default {
       }
     },
     stopRecording() {
-      if (this.mediaRecorder && this.recording) {
-        this.mediaRecorder.stop();
-        this.recording = false;
-      }
+      if (this.webcamStream) {
+    this.webcamStream.getTracks().forEach(track => track.stop());
+    this.webcamStream = null;
+  }
+      this.$store.dispatch('stopRecording');
     }
   }
 

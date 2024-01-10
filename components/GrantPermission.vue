@@ -41,43 +41,13 @@
 <script>
 export default {
 name:'GrantPermission',
-data() {
-    return {
-      mediaRecorder: null,
-      recordedChunks: [],
-      recording: false,
-    };
-  },
+
   methods: {
     startRecording() {
-      navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-        .then((stream) => {
-          this.mediaRecorder = new MediaRecorder(stream);
-          this.recordedChunks = [];
-
-          this.mediaRecorder.ondataavailable = (event) => {
-            if (event.data.size > 0) {
-              this.recordedChunks.push(event.data);
-            }
-          };
-
-          this.mediaRecorder.onstop = () => {
-            this.saveRecording();
-          };
-
-          this.mediaRecorder.start();
-          this.recording = true;
-          this.$router.push('/Session')
-        })
-        .catch((error) => {
-          alert('Error accessing media devices:', error);
-        });
+      this.$store.dispatch('startRecording')
     },
     stopRecording() {
-      if (this.mediaRecorder && this.recording) {
-        this.mediaRecorder.stop();
-        this.recording = false;
-      }
+      this.$store.dispatch('stopRecording')
     },
     saveRecording() {
       const blob = new Blob(this.recordedChunks, { type: 'video/webm' });
