@@ -4,6 +4,10 @@ body
 
 }
 
+button
+{
+  font-size: small !important;
+}
 .btn:focus
 {
   box-shadow: none;
@@ -73,6 +77,8 @@ body
 }
 aside
 {
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
   width: 19.125%;
   position: fixed;
@@ -106,8 +112,9 @@ aside
 }
 .main-content
 {
-  width: 90%;
-  margin-left: 20.4%;
+  width: 80%;
+  margin-top: 9%;
+  margin-left: 22.5%;
 }
 a:hover, a:active
 {
@@ -161,4 +168,22 @@ nav
 .text-dark-blue
 {
   color:  #637C8E;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-item-pill
+  {
+    font-size: x-small;
+    text-align: center;
+    width: 100%;
+  }
+  .filter-section, .new-request-btn
+  {
+    margin-bottom: 5%;
+  }
+  .main-content
+  {
+    margin-top: 30%;
+  }
+
 }

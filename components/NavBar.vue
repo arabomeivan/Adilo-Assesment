@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-light fixed-top">
   <div class="container-fluid">
     <nuxt-link to="/" class="gap-2 p-2 d-flex align-items-center">
     <div class="brand p-1 d-flex justify-content-center">
@@ -14,7 +14,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-center">
-      <ul class="nav nav-tabs ml-5 gap-4">
+      <ul class="nav nav-tabs ml-5 gap-2">
         <li class="nav-item">
     <a class="nav-link nav-link-active" aria-current="page" href="#">Projects</a>
   </li>

@@ -18,7 +18,7 @@
 <p class="text-grey text-small mt-1">Record your first video/audio and share it what your team, friends, followers and customers.</p>
 
 <div class="mt-3">
-  <button type="button" class="btn btn-primary gap-3"><i class="bi bi-camera-video mr-1"></i> New Request</button>
+  <button type="button" class="btn btn-primary gap-3 new-request-btn"><i class="bi bi-camera-video mr-1"></i> New Request</button>
   <button type="button" class="btn btn-danger gap-3"><i class="bi bi-record-circle mr-1"></i>Start Recording</button>
 </div>
 </div>
@@ -40,10 +40,10 @@
 </div>
 </div>
 
-<div>
+<!-- <div>
     <button @click="startRecording">Start Recording</button>
     <button @click="stopRecording">Stop Recording</button>
-  </div>
+  </div> -->
 <!-- INFO SECTION -->
  </div>
 </template>
