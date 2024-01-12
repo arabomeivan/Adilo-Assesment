@@ -32,6 +32,8 @@
      <td>332</td>
      <td>{{recording.fileSize}} &nbsp;KB</td>
      <td>{{recording.recordingTime}}</td>
+     <td>{{recording.recordingTime}}</td>
+     <button type="button" class="btn btn-transparent"><i class="bi bi-three-dots text-dark-blue"></i></button>
     </tr>
 
   </thead>

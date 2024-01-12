@@ -15,6 +15,11 @@ button
 {
   box-shadow: none;
 }
+.btn-transparent
+{
+  border: none;
+  background: transparent;
+}
 .btn-light, .btn-light:hover{
   background: transparent;
   border-radius: 28px;
