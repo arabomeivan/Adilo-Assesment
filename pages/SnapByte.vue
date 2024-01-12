@@ -25,6 +25,15 @@
       <th scope="col" class="text-dark-blue">Size</th>
       <th scope="col" class="text-dark-blue">Last Modified</th>
     </tr>
+
+    <tr v-for="recording in recordings" :key="recording">
+     <td> <img :src="recording.thumbnails" alt="Thumbnail"></td>
+     <td>{{recording.title}}</td>
+     <td>332</td>
+     <td>{{recording.fileSize}} &nbsp;KB</td>
+     <td>{{recording.recordingTime}}</td>
+    </tr>
+
   </thead>
 </table>
 </div>
@@ -38,7 +47,18 @@ export default {
   components:{
     PaNel
   },
-  layout: 'Dashboard'
+  layout: 'Dashboard',
+  computed:
+  {
+    recordings()
+    {
+      return this.$store.state.recordings
+    }
+  },
+
+  mounted(){
+    console.log(this.recordings)
+  }
 }
 </script>
 <style lang="">

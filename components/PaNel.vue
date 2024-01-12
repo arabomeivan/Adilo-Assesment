@@ -2,7 +2,7 @@
   <div>
     <div class="row">
   <div class="col-lg-4">
-    <h5 class="text-dark-blue">My Recordings 0</h5>
+    <h5 class="text-dark-blue">My Recordings {{recordings.length}}</h5>
   </div>
   <div class="col-lg-8 d-flex justify-content-end">
     <div class="container">
@@ -24,6 +24,13 @@
 <script>
 export default {
   name: 'PaNel',
+  computed:
+  {
+    recordings()
+    {
+      return this.$store.state.recordings
+    }
+  },
   methods:
   {
     startRecording()
@@ -34,7 +41,7 @@ export default {
     {
       this.$emit('startRecording')
     }
-  }
+  },
 }
 </script>
 <style lang="">

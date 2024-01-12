@@ -4,6 +4,7 @@ export const state = () => ({
   mediaRecorder: null,
   recordedChunks: [],
   recording: false,
+  recordings: [],
   mediaStream: null, // New state to store the media stream
 });
 
@@ -20,6 +21,11 @@ export const mutations = {
   changeMediaStream(state, value) {
     state.mediaStream = value;
   },
+
+  setRecordings(state, values)
+  {
+    state.recordings = values
+  }
 };
 
 export const actions = {
@@ -57,6 +63,35 @@ export const actions = {
         state.mediaStream.getTracks().forEach(track => track.stop());
         commit('changeMediaStream', null);
       }
+
+      // save the video and generate thumbnail for it
+      const videoBlob = new Blob(state.recordedChunks, { type: 'video/webm' });
+    const videoURL = URL.createObjectURL(videoBlob);
+
+    const videoElement = document.createElement('video');
+    videoElement.src = videoURL;
+
+    // Create a canvas and draw the first frame
+    const canvas = document.createElement('canvas');
+    canvas.width = videoElement.videoWidth;
+    canvas.height = videoElement.videoHeight;
+    canvas.getContext('2d').drawImage(videoElement, 0, 0);
+
+    // Convert the canvas to a data URL (thumbnail)
+    const thumbnail = canvas.toDataURL('image/jpeg');
+
+    console.log(thumbnail)
+    const recordingDetails = {
+      title: 'Random video Recording',
+      fileSize: state.recordedChunks.reduce((acc, chunk) => acc + chunk.size, 0),
+      recordingTime: new Date().toLocaleString(),
+      thumbnails: thumbnail,
+    };
+
+    const recordings = []
+    recordings.push(recordingDetails)
+
+    commit('setRecordings', recordings)
     }
   },
 };
