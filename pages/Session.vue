@@ -19,6 +19,12 @@
 export default {
   name:'Session',
   layout:'Dashboard',
+
+  data(){
+    return{
+      webcamStream:''
+    }
+  },
   mounted()
   {
     this.webcam()
@@ -29,19 +35,21 @@ export default {
     async webcam()
     {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        this.webcamStream = await navigator.mediaDevices.getUserMedia({ video: true });
         const webcamVideo = this.$refs.webcamVideo;
-        webcamVideo.srcObject = stream;
+        webcamVideo.srcObject = this.webcamStream;
       } catch (error) {
         console.log(error)
       }
     },
     stopRecording() {
-      if (this.webcamStream) {
+    //  Stop the video stream from the webcam
+  if (this.webcamStream) {
     this.webcamStream.getTracks().forEach(track => track.stop());
     this.webcamStream = null;
   }
       this.$store.dispatch('stopRecording');
+      this.$router.push('/snapbyte')
     }
   }
 

@@ -12,8 +12,8 @@
   <button type="button" class="btn btn-light"><i class="bi bi-funnel mr-1"></i>Add Filter</button>
     </div>
     <div class="col-lg-6 gap-1 d-flex px-0">
-      <button type="button" class="btn btn-primary gap-3"><i class="bi bi-camera-video mr-1"></i> New Request</button>
-  <button type="button" class="btn btn-danger"><i class="bi bi-record-circle mr-1"></i> Start Recording</button>
+      <button type="button" class="btn btn-primary gap-3" @click="grantPermission"><i class="bi bi-camera-video mr-1"></i> New Request</button>
+  <button type="button" class="btn btn-danger" @click="startRecording"><i class="bi bi-record-circle mr-1"></i> Start Recording</button>
     </div>
     </div>
     </div>
@@ -24,6 +24,17 @@
 <script>
 export default {
   name: 'PaNel',
+  methods:
+  {
+    startRecording()
+    {
+      this.$store.dispatch('startRecording')
+    },
+    grantPermission()
+    {
+      this.$emit('startRecording')
+    }
+  }
 }
 </script>
 <style lang="">

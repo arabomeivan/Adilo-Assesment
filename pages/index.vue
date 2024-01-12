@@ -9,7 +9,7 @@
 
   <!-- PANEL -->
 <div>
-<PaNel/>
+<PaNel @startRecording="grantPermission" />
 </div>
 <!-- RECORD SECTION -->
 <div class="flex-grow-1 border record-section mt-5 p-5 text-center">
@@ -23,7 +23,7 @@
 
 <div class="mt-3">
   <button type="button" class="btn btn-primary gap-3 new-request-btn" @click="grantPermission"><i class="bi bi-camera-video mr-1"></i> New Request</button>
-  <button type="button" class="btn btn-danger gap-3"><i class="bi bi-record-circle mr-1"></i>Start Recording</button>
+  <button type="button" class="btn btn-danger gap-3" @cick="startRecording"><i class="bi bi-record-circle mr-1"></i>Start Recording</button>
 </div>
 </div>
 <!-- RECORD SECTION -->
@@ -65,6 +65,11 @@ export default {
     grantPermission() {
       this.$bvModal.show('grant-permission')
     },
+
+    startRecording()
+    {
+      this.$store.dispatch('startRecording')
+    }
   },
 }
 </script>

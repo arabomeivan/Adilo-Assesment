@@ -35,11 +35,6 @@ export const actions = {
           }
         };
 
-        mediaRecorder.onstop = () => {
-          // Placeholder: Define the method to save the recording or handle onstop event
-          // this.saveRecording();
-          console.log('Recording stopped');
-        };
 
         mediaRecorder.start();
         commit('changeRecording', true);
@@ -55,6 +50,7 @@ export const actions = {
       state.mediaRecorder.stop();
       commit('changeRecording', false);
       commit('changeRecordedChunks', []);
+
 
       // Stop the media stream
       if (state.mediaStream) {
