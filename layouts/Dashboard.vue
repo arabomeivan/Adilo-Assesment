@@ -11,7 +11,7 @@
   <aside v-if="displaySideBar" class="bg-light py-5 px-2">
     <ul class="nav flex-column gap-2 mt-5">
   <li class="nav-item-pill mt-5 justify-content-center d-flex">
-    <nuxt-link to="/" class="nav-link d-flex tab">
+    <nuxt-link to="/snapbyte" class="nav-link d-flex tab">
       <div class="container">
     <div class="row">
     <div class="col-lg-3">
