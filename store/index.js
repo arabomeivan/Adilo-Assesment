@@ -71,13 +71,13 @@ export const actions = {
     const videoElement = document.createElement('video');
     videoElement.src = videoURL;
 
-    // Create a canvas and draw the first frame
+    // Creates a canvas and draw the first frame
     const canvas = document.createElement('canvas');
     canvas.width = videoElement.videoWidth;
     canvas.height = videoElement.videoHeight;
     canvas.getContext('2d').drawImage(videoElement, 0, 0);
 
-    // Convert the canvas to a data URL (thumbnail)
+    // Converts the canvas to a data URL (thumbnail)
     const thumbnail = canvas.toDataURL('image/jpeg');
 
     console.log(thumbnail)
